@@ -1,12 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
+import Header from './src/compoents/Header';
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -16,15 +10,30 @@ import {
   StatusBar,
 } from 'react-native';
 
-const App = () => {
-  return ( 
-            <View >
-              <Text>Bora começar</Text>
-            
-            </View>
-           
-  );
-};
+class App extends React.Component {
+  renderList() {
+    const names = [
+      'João',
+      'Puall',
+      'Addade',
+      'asdEE',
+      'Paulo',
+      'Ticket',
+    ]
+    const textNomes = names.map(nome => {
+      return <Text key={nome}> {nome} </Text>
+    })
+    return textNomes;
+  }
+
+  render() {
+    return (
+      <View>
+        <Header title='Pessoas' />
+        {this.renderList()}
+      </View>)
+  }
+}
 
 
 export default App;
