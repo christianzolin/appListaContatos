@@ -32,7 +32,7 @@ class App extends React.Component {
     return (
       <View>
         <Header title='Pessoas' />
-        <ListaPessoas pessoa={this.state.pessoas}/>
+        <ListaPessoas pessoas={this.state.pessoas}/>
       </View>)
   }
 }

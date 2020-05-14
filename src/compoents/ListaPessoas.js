@@ -1,17 +1,21 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-
+import { View, Text, StyleSheet } from 'react-native'
+import ListaPessoasItens from './ListaPessoaItens'
 const ListaPessoas = props => {
-    const { pessoa } = props;
-    const listaPessoas = pessoa.map(pessoa => {
-        const { first } = pessoa.name;
-        return <Text key={first}> {first}</Text>
+    const { pessoas } = props;
+    const itens = pessoas.map(pessoa => {
+        return <ListaPessoasItens key={pessoa.name.first} pessoa={pessoa} />
     })
     return (
-        <View>
-            {listaPessoas}
+        <View style={styles.container}>
+            {itens}
         </View>
     )
 }
 
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#e2f9ff',
+    }
+})
 export default ListaPessoas;
