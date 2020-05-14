@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './src/compoents/Header';
+import ListaPessoas from './src/compoents/ListaPessoas'
 
 import {
   SafeAreaView,
@@ -9,31 +10,33 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import axios from 'axios'
+// https://randomuser.me/api/?mat=br&results=5
 
 class App extends React.Component {
-  renderList() {
-    const names = [
-      'João',
-      'Puall',
-      'Addade',
-      'asdEE',
-      'Paulo',
-      'Ticket',
-    ]
-    const textNomes = names.map(nome => {
-      return <Text key={nome}> {nome} </Text>
-    })
-    return textNomes;
+  constructor(props) {
+    super(props)
+    this.state = {
+      pessoas: []
+    }
   }
-
+  
+  componentDidMount() {
+    axios.get('https://randomuser.me/api/?nat=br&results=10')
+      .then(resultado => {
+        const { results } = resultado.data
+        this.setState({ pessoas: results })
+      })
+  }
   render() {
     return (
       <View>
         <Header title='Pessoas' />
-        {this.renderList()}
+        <ListaPessoas pessoa={this.state.pessoas}/>
       </View>)
   }
 }
+
 
 
 export default App;
