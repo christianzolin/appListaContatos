@@ -1,15 +1,17 @@
 import React from 'react'
-import { Text, View, StyleSheet, Image } from 'react-native'
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 
 const ListaPessoaItens = props => {
     const { pessoa } = props;
     const { first, last } = pessoa.name
     const { thumbnail } = pessoa.picture
     return (
-        <View style={styles.line}>
-            <Image source={{uri: thumbnail }} style={styles.avatar}/>
-            <Text style={styles.lineText}> {`${first} ${last} `}</Text>
-        </View>
+        <TouchableOpacity onPress={() => {}}>
+            <View style={styles.line}>
+                <Image source={{ uri: thumbnail }} style={styles.avatar} />
+                <Text style={styles.lineText}> {`${first} ${last} `}</Text>
+            </View>
+        </TouchableOpacity>
     )
 }
 
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         flex: 7
     },
-    avatar:{
+    avatar: {
         aspectRatio: 1,
         flex: 1,
         marginLeft: 5,
