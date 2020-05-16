@@ -8,7 +8,8 @@ class PaginaPessoa extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            pessoas: []
+            pessoas: [],
+            nome: ''
         }
     }
 
@@ -19,11 +20,15 @@ class PaginaPessoa extends React.Component {
                 this.setState({ pessoas: results })
             })
     }
-    render() {
+    render() { 
         return (
             <View>
-                <Header title='Pessoas' />
-                <ListaPessoas pessoas={this.state.pessoas} />
+                <ListaPessoas
+                    pessoas={this.state.pessoas}
+                    onPress={(pageParms) => {
+                        this.props.navigation.navigate('Detalhes',pageParms)
+                    }}
+                />
             </View>)
     }
 }
