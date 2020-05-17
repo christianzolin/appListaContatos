@@ -15,7 +15,6 @@ export default App = () => {
           name="Pessoas"
           component={PaginaPessoa}
           options={({ navigation }) => {
-
             return ({
               title: 'Pessoa',
               headerTintColor: 'red',
@@ -29,33 +28,13 @@ export default App = () => {
                 color: 'white',
                 fontSize: 20,
               },
-            }
-            )
-          }
-          }
-        // headerLeft: () => (
-        //   <DrawerButton onPress={() => navigation.toggleDrawer()} />
-        // ),
-        // options={{
-        //   title: 'Pessoas',
-        //   headerTintColor: 'red',
-        //   headerStyle: {
-        //     backgroundColor: '#6ca2f7',
-        //     borderBottomWidth: 1,
-        //     borderBottomColor: 'black'
-        //   },
-        //   headerTitleStyle: {
-        //     alignSelf: 'center',
-        //     color: 'white',
-        //     fontSize: 30,
-        // }
-        // }} 
+            })
+          }}
         />
         <Stack.Screen
           name="Detalhes"
           component={PaginaDetalhePessoas}
           options={({ navigation }) => {
-
             return ({
               title: 'Detalhes da Pessoa',
               headerTintColor: 'black',
@@ -69,10 +48,8 @@ export default App = () => {
                 color: 'white',
                 fontSize: 30,
               },
-            }
-            )
-          }
-          }
+            })
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

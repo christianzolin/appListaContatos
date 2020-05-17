@@ -1,13 +1,5 @@
 import React from 'react'
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    Image,
-    StatusBar,
-} from 'react-native';
+import { StyleSheet, ScrollView, View, Image } from 'react-native';
 import Line from '../compoents/line'
 class PaginaDetalhesPessoa extends React.Component {
 

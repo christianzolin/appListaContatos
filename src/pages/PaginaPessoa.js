@@ -1,7 +1,6 @@
 import React from 'react';
-import Header from '../compoents/Header';
 import ListaPessoas from '../compoents/ListaPessoas'
-import { View } from 'react-native';
+import { ActivityIndicator, View, Alert, Text} from 'react-native';
 import axios from 'axios'
 
 class PaginaPessoa extends React.Component {
@@ -9,27 +8,39 @@ class PaginaPessoa extends React.Component {
         super(props)
         this.state = {
             pessoas: [],
-            nome: ''
+            loading: false,
+            error: false
         }
     }
 
     componentDidMount() {
-        axios.get('https://randomuser.me/api/?nat=br&results=10')
-            .then(resultado => {
-                const { results } = resultado.data
-                this.setState({ pessoas: results })
-            })
-            .catch(erro => { console.log('erro', erro)})
+        this.setState({ loading: true })
+        setTimeout(() => {
+            axios.get('https://randomuser.me/api/?nat=br&results=25')
+                .then(resultado => {
+                    const { results } = resultado.data
+                    this.setState({ pessoas: results, loading: false })
+                })
+                .catch(erro => {
+                    this.setState({ loading: false, error: true })
+                })
+        }, 2500);
     }
-    render() { 
+    render() {
         return (
-            <View>
-                <ListaPessoas
-                    pessoas={this.state.pessoas}
-                    onPress={(pageParms) => {
-                        this.props.navigation.navigate('Detalhes',pageParms)
-                    }}
-                />
+            <View style={{ flex: 1, justifyContent: 'center' }}>
+                {
+                    this.state.loading
+                        ? <ActivityIndicator size='large' color='purple' />
+                        : this.state.error
+                            ? <Text style={{color: 'red', alignSelf:'center'}}>Ops... algo deu errado =( </Text>
+                            : <ListaPessoas
+                                pessoas={this.state.pessoas}
+                                onPress={(pageParms) => {
+                                    this.props.navigation.navigate('Detalhes', pageParms)
+                                }}
+                            />
+                }
             </View>)
     }
 }
