@@ -8,8 +8,7 @@ import {
     Image,
     StatusBar,
 } from 'react-native';
-import ListaPessoas from '../compoents/ListaPessoas';
-
+import Line from '../compoents/line'
 class PaginaDetalhesPessoa extends React.Component {
 
     render() {
@@ -23,10 +22,11 @@ class PaginaDetalhesPessoa extends React.Component {
                     style={styles.avatar}
                 />
                 <View style={styles.detalhesContainer}>
-                    <View style={styles.line}>
-                        <Text style={styles.cell}> Email:  </Text>
-                        <Text style={styles.cell}> {pessoa.email} </Text>
-                    </View>
+                    <Line label={'E-mail'} content={pessoa.email} />
+                    <Line label={'Cidade'} content={pessoa.location.city} />
+                    <Line label={'Estado'} content={pessoa.location.state} />
+                    <Line label={'Cel'} content={pessoa.cell} />
+                    <Line label={'Nacionalidade'} content={pessoa.nat} />
                 </View>
             </View>
         )
@@ -40,22 +40,13 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     avatar: {
-        aspectRatio: 1,
+        aspectRatio: 1
     },
     detalhesContainer: {
         backgroundColor: '#e2f9ff',
         marginTop: 20,
-        elevation: 1
+        elevation: 1,
+        padding: 1
     },
-    line: {
-        flexDirection: 'row',
-        paddingTop: 3,
-        paddingBottom: 3,
-        borderWidth: 1,
-        borderColor: 'black'
-    },
-    cell: {
-        fontSize: 18,
-        paddingLeft: 5,
-    }
+
 })

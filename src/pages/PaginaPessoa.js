@@ -19,6 +19,7 @@ class PaginaPessoa extends React.Component {
                 const { results } = resultado.data
                 this.setState({ pessoas: results })
             })
+            .catch(erro => { console.log('erro', erro)})
     }
     render() { 
         return (
@@ -32,7 +33,5 @@ class PaginaPessoa extends React.Component {
             </View>)
     }
 }
-
-
 
 export default PaginaPessoa;

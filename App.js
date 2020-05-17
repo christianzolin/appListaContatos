@@ -3,15 +3,6 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
 import PaginaPessoa from './src/pages/PaginaPessoa'
 import PaginaDetalhePessoas from './src/pages/PaginaDetalhesPessoas'
 
@@ -36,7 +27,7 @@ export default App = () => {
               headerTitleStyle: {
                 alignSelf: 'center',
                 color: 'white',
-                fontSize: 30,
+                fontSize: 20,
               },
             }
             )
@@ -66,8 +57,8 @@ export default App = () => {
           options={({ navigation }) => {
 
             return ({
-              title: 'Detalhes Pessoas',
-              headerTintColor: 'red',
+              title: 'Detalhes da Pessoa',
+              headerTintColor: 'black',
               headerStyle: {
                 backgroundColor: '#6ca2f7',
                 borderBottomWidth: 1,
